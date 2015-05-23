@@ -1,7 +1,7 @@
 ---
-title       : 
+title       : Mortgage Calculator App
 subtitle    : 
-author      : 
+author      : jmfuch02
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -21,6 +21,6 @@ knit        : slidify::knit2slides
 
 ## Slide 2
 
-
+This is another slide
 
 
