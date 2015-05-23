@@ -11,11 +11,11 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## Introduction
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+With interest rates in the United States at all-time lows, more people are looking to buy a house or refinance their current mortgage.
+
+This tool shows you much prinicipal you will have on a loan at a given time, so you can compare different mortgage rates.
 
 --- .class #id 
 
@@ -23,4 +23,14 @@ knit        : slidify::knit2slides
 
 This is another slide
 
+---
 
+##Slide 3
+
+---
+
+##Slide 4
+
+---
+
+##Slide 5
