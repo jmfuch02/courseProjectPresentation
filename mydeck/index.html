@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
@@ -33,7 +33,7 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Mortgage Calculator App</h1>
-    <h2></h2>
+    <h2>A quick introduction</h2>
     <p>jmfuch02<br/></p>
   </hgroup>
   <article></article>  
@@ -56,34 +56,67 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Amortization Explained</h2>
   </hgroup>
   <article data-timings="">
-    <p>This is another slide</p>
+    <p>The amount of principal left at any point in time can be calculated this way:</p>
+
+<p>\(p\left ( t \right ) = P \left [ \frac{(1+i/12)^{t}-1}{(1+i/12)^{n}-1} \right ]\)</p>
+
+<p>where:</p>
+
+<p>P is the original loan amount</p>
+
+<p>i is the interest rate</p>
+
+<p>t id the number of months passed</p>
+
+<p>n is the total number of months in the loan</p>
+
+<p>Source: <a href="http://en.wikipedia.org/wiki/Amortization_calculator">http://en.wikipedia.org/wiki/Amortization_calculator</a></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>An Example</h2>
+  </hgroup>
   <article data-timings="">
-    <p>##Slide 3</p>
+    <p>Assume P = $100,000, i = 3.5%, and the term is 30 years.
+We want to see what the principal should be at month 100.</p>
+
+<pre><code class="r">p &lt;- function (t, P, i, n) {
+    top = ((1 + (i / 12)) ^ t) - 1
+    bottom = ((1 + (i / 12)) ^ n) - 1
+    p = P * (1 - top/bottom)
+    return(p)
+    }
+
+p(100, 100000, .035, 30*12)
+</code></pre>
+
+<pre><code>## [1] 81757.36
+</code></pre>
+
+<p>If you check month 101 in the App, you will find $81,757.3573.
+You have to check the next month because of a slight different in how the 2 formulas are calculated</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Recommendations For Further Improvement</h2>
+  </hgroup>
   <article data-timings="">
-    <p>##Slide 4</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <article data-timings="">
-    <p>##Slide 5</p>
+    <ul>
+<li>Show the monthly payment amount</li>
+<li>Add lines showing how much of the payment goes to interest and principal each month</li>
+<li>Add comparison feature for different loans</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -101,26 +134,20 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Amortization Explained'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='NA'>
+        data-slide=3 title='An Example'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='NA'>
+        data-slide=4 title='Recommendations For Further Improvement'>
          4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='NA'>
-         5
       </a>
     </li>
   </ul>
@@ -133,7 +160,21 @@
 </body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
